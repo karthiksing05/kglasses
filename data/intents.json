@@ -1,0 +1,35 @@
+{"intents": [
+    {"tag": "hello",
+        "patterns": ["Hi", "Hello"],
+        "responses": ["Welcome back, {x}!", "Good to see you again"]
+    },
+    {"tag": "morning",
+        "patterns": ["Good morning", "its time to get up for the day", ""],
+        "responses": ["Good morning, {x}! Glad to see you up!", "Good day, {x}"]
+    },
+    {"tag": "night",
+        "patterns": ["Good night", "I am going to bed", "Time to go to sleep", "See you tomorrow"],
+        "responses": ["Good night, {x}! See you tomorrow!", "Rest well, {x}."]
+    },
+    {"tag": "how-are-you",
+        "patterns": ["How are you today?", "how ya doing", "what's up", "how do you feel", "are you good"],
+        "responses": ["I am doing fantastic! How are you today?", "I am good, {x}. What about you?", "I'm always good, {x}."]
+    },
+    {"tag": "user-good",
+        "patterns": ["I am great", "good, thank you.", "I am feeling pretty awesome", "I am alive and well!"],
+        "responses": ["That's great!", "I am glad you are well, {x}.", "Wonderful, {x}!"]
+    },
+    {"tag": "user-bad",
+        "patterns": ["I am under the weather", "I am tired", "I am sad", "I am currently feeling unhappy", "I am depressed"],
+        "responses": ["I am sorry to hear that, {x}. I hope you feel better soon!", "Cheer up, {x}! Every day is what we make of it!"]
+    },
+    {"tag": "goodbye",
+        "patterns": ["Bye", "That's all for now", "Goodbye", "see you later"],
+        "responses": ["Bye, {x}!", "Goodbye!", "I will see you later!", "Have fun, {x}!"]
+    },
+    {"tag": "thanks",
+        "patterns": ["Thanks", "Thank you", "That's helpful of you"],
+        "responses": ["I'm glad you enjoyed my assistance!", "Any time, {x}!", "My pleasure, {x}."]
+    }
+]
+}
