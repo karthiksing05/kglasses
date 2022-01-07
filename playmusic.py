@@ -55,8 +55,7 @@ def pygame_pause():
     
     except Exception as e:
         if str(e) == "mixer not initialized":
-            # speech.pytts("You have no songs playing currently.")
-            pass
+            print("You have no songs playing currently.")
         
         else:
             print("Different Exception: {}".format(e))
@@ -67,7 +66,7 @@ def pygame_unpause():
     
     except Exception as e:
         if str(e) == "mixer not initialized":
-            speech.pytts("You have no songs playing currently.")
+            print("You have no songs playing currently.")
         
         else:
             print("Different Exception: {}".format(e))
@@ -79,7 +78,7 @@ def pygame_stop():
     
     except Exception as e:
         if str(e) == "mixer not initialized":
-            speech.pytts("You have no songs playing currently.")
+            print("You have no songs playing currently.")
         
         else:
             print("Different Exception: {}".format(e))

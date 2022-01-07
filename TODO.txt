@@ -1,0 +1,2 @@
+add a display function to display to OLED
+create a "print statement" for OLED display

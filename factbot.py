@@ -14,7 +14,7 @@ with open('data\\token.pickle', 'rb') as f:
 # initalizing the client
 client = wolframalpha.Client(app_id=APP_ID)
 
-def factbot(command):
+def answer_question(command):
     values = [command, None]
     try:
         wiki_res = wikipedia.summary(values[0], sentences=1)
@@ -45,4 +45,4 @@ if __name__ == '__main__':
         if "exit" in command:
             exit()
         else:
-            factbot(command)
+            answer_question(command)

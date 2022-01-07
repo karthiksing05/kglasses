@@ -43,7 +43,7 @@ def pytts(text):
     engine.setProperty('rate', rate - 50)
 
     gender = engine.getProperty('voices')
-    engine.setProperty('voice', gender[1].id)
+    engine.setProperty('voice', gender[0].id)
 
     fade_out_while_speaking()
     engine.say(text)

@@ -117,4 +117,4 @@ def converse(user_input):
     return resp
 
 if __name__ == '__main__':
-    print(converse("Hi there!"))
+    print(converse("Hi there."))

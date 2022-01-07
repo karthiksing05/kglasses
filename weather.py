@@ -166,7 +166,8 @@ def get_weather(location):
         night_fahrenheit) + " degrees fahrenheit."
 
     pytts(night_narrative)
-
+    
+    return day_narrative, night_narrative
 
 if __name__ == "__main__":
     get_weather("present")

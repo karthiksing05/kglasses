@@ -1,6 +1,6 @@
 import pickle
 
-import pprint
+from pprint import pprint
 
 from wit import Wit
 
@@ -10,13 +10,11 @@ with open('data\\token.pickle', 'rb') as f:
 Client = Wit(ACCESS_TOKEN)
 
 from automation import *
-from factbot import *
-from shortcut import shortcut
+from factbot import answer_question
 from weather import get_weather
 from playmusic import play_song, pygame_pause, pygame_unpause, pygame_stop
 from conversation import converse
 from news import get_news
-from ethics import make_decision
 from demo import demo
 
 def identify_action(command):
@@ -30,7 +28,6 @@ def identify_action(command):
 
     # It should return the name of the action that should be completed and the keywords of the action
     return intent_name, entities, userText
-
 
 def execute_action(intent_name, entities, userText):
     # Lots of if/else statements in this function to decide what to do.
@@ -69,31 +66,15 @@ def execute_action(intent_name, entities, userText):
     elif intent_name == "take_note":
         take_note()
 
-    elif intent_name == "open_word":
-        open_word()
-
-    elif intent_name == "open_ppt":
-        open_powerpoint()
-
-    elif intent_name == "open_excel":
-        open_excel()
-
-    elif intent_name == "open_website":
-        website = entities['website_url:website_url'][0]['body']
-        open_website(website)
-
     elif intent_name == "trivia":
         query = userText
-        factbot(query)
+        answer_question(query)
 
     elif intent_name == "date_today":
         date_today()
 
     elif intent_name == "time_today":
         time_today()
-
-    elif intent_name == "shortcut":
-        shortcut()
 
     elif intent_name == "get_weather":
         try:
@@ -107,8 +88,7 @@ def execute_action(intent_name, entities, userText):
         pprint([headline[0] for headline in headlines])
         pytts("Top headlines have been display in the log for you.")
 
-    elif intent_name == "ethics":
-        make_decision()
+        return headlines
 
     elif intent_name == "demo":
         demo()
