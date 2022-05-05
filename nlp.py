@@ -16,6 +16,7 @@ from playmusic import play_song, pygame_pause, pygame_unpause, pygame_stop
 from conversation import converse
 from news import get_news
 from demo import demo
+from reminders import write_reminder
 
 def identify_action(command):
     resp = Client.message(command)
@@ -71,10 +72,10 @@ def execute_action(intent_name, entities, userText):
         answer_question(query)
 
     elif intent_name == "date_today":
-        date_today()
+        date_str = date_today()
 
     elif intent_name == "time_today":
-        time_today()
+        time_str = time_today()
 
     elif intent_name == "get_weather":
         try:
@@ -92,3 +93,8 @@ def execute_action(intent_name, entities, userText):
 
     elif intent_name == "demo":
         demo()
+    
+    elif intent_name == 'reminder':
+        reminder = entities['song_title:song_title'][0]['body']
+        dt_to_remind = entities['song_title:song_title'][0]['body']
+        write_reminder(reminder, dt_to_remind)
