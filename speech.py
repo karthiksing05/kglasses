@@ -1,11 +1,13 @@
 from gtts import gTTS
 import speech_recognition as sr
+from pocketsphinx import LiveSpeech
 import pyttsx3
 from playsound import playsound
 import time
 import os
 
 from playmusic import fade_out_while_speaking, unfade_in_while_speaking
+from display_control import format_display
 
 # function to play audio.
 def mp3tts(audio):
@@ -55,11 +57,12 @@ def pytts(text):
 def myCommand(prompt):
     for index, name in enumerate(sr.Microphone.list_microphone_names()):
         if "pulse" in name:
-            required= index
+            required = index
     r = sr.Recognizer()
     pytts(prompt)
     with sr.Microphone() as source:
         r.adjust_for_ambient_noise(source)
+        r.energy_threshold = 1000 # anywhere from 50 to 4000
         print("Say something!")
         audio = r.listen(source, phrase_time_limit=4)
     try:

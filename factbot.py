@@ -1,11 +1,9 @@
-import time
 import pickle
 
 import wikipedia
 import wolframalpha
-import PySimpleGUI as sg
 
-from speech import pytts, myCommand
+from speech import pytts
 
 # App-ID for Wolfram Alpha
 with open('data\\token.pickle', 'rb') as f:
@@ -19,7 +17,7 @@ def answer_question(command):
     try:
         wiki_res = wikipedia.summary(values[0], sentences=1)
         wolfram_res = next((client.query(values[0])).results).text
-        pytts("the answer is "+wolfram_res)
+        pytts("Answer: "+wolfram_res)
         print("Answer: " + wolfram_res, "\nMore Details: " + wiki_res)
 
     except wikipedia.exceptions.DisambiguationError:
@@ -33,7 +31,7 @@ def answer_question(command):
         # print(wolfram_res)
 
     except:
-        wiki_res = wikipedia.summary(values[0], sentences=2)
+        wiki_res = wikipedia.summary(values[0], sentences=1)
         pytts("Answer: "+wiki_res)
         # print(wiki_res)
 

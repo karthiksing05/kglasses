@@ -94,7 +94,7 @@ def execute_action(intent_name, entities, userText):
     elif intent_name == "demo":
         demo()
     
-    elif intent_name == 'reminder':
+    elif intent_name == 'reminder': # train Wit.ai clf on reminders
         reminder = entities['song_title:song_title'][0]['body']
         dt_to_remind = entities['song_title:song_title'][0]['body']
         write_reminder(reminder, dt_to_remind)

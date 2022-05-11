@@ -1,2 +1,32 @@
-add a display function to display to OLED
-create a "print statement" for OLED display
+Functions of Benji:
+- Play, pause, unpause, stop music --> display "Song Playing: " on line1, the current track on line2, and artist on line3
+- basic conversation --> needs no display
+- take notes --> no display?
+- answer any random factoid --> line1 should be "Answer: " and lines2-3 should be the actual thing (wrap)
+- date and time today --> default display, should always be neutrally displayed
+- get the weather of any location (including current)
+- gets the top news headlines --> scrolls through headlines on screen
+- sets timely reminders --> icon in default display detailing if there's any upcoming reminders? scroll ftr fs for showing reminders
+
+-------------------------------------------------------------------
+from google.cloud import speech_v1 as speech
+
+
+def speech_to_text(config, audio):
+    client = speech.SpeechClient()
+    response = client.recognize(config=config, audio=audio)
+    print_sentences(response)
+
+
+def print_sentences(response):
+    for result in response.results:
+        best_alternative = result.alternatives[0]
+        transcript = best_alternative.transcript
+        confidence = best_alternative.confidence
+        print("-" * 80)
+        print(f"Transcript: {transcript}")
+        print(f"Confidence: {confidence:.0%}")
+
+
+config = dict(language_code="en-US")
+audio = dict(uri="gs://cloud-samples-data/speech/brooklyn_bridge.flac")
