@@ -9,7 +9,7 @@ def display(text, coordx, coordy, clear_oled=False):
     No idea if this will work on Pi, but should work on Windows for testing. 
     
     Remember each text written should be 10 px apart to prevent overlap, and 
-    at most you should have three lines on screen, each line being no more 
+    at most you should have 6 lines on screen, each line being no more 
     than ~16 characters (including spaces).
     """
     ser = serial.Serial()
