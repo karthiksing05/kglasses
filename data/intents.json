@@ -4,7 +4,7 @@
         "responses": ["Welcome back, {x}.", "Good to see you again"]
     },
     {"tag": "morning",
-        "patterns": ["Good morning", "its time to get up for the day", ""],
+        "patterns": ["Good morning", "its time to get up for the day"],
         "responses": ["Good morning, {x}. Glad to see you up.", "Good day, {x}"]
     },
     {"tag": "night",
@@ -16,7 +16,7 @@
         "responses": ["I am doing fantastic. How are you today?", "I am good, {x}. What about you?", "I'm always good, {x}."]
     },
     {"tag": "user-good",
-        "patterns": ["I am great", "good, thank you.", "I am feeling pretty awesome", "I am alive and well."],
+        "patterns": ["I am great", "good, thank you.", "I am feeling pretty awesome", "I am alive and well.", "I am good"],
         "responses": ["That's great.", "I am glad you are well, {x}.", "Wonderful, {x}."]
     },
     {"tag": "user-bad",

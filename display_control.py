@@ -13,7 +13,7 @@ def display(text, coordx, coordy, clear_oled=False):
     than ~16 characters (including spaces).
     """
     ser = serial.Serial()
-    ser.baudrate = (115200)
+    ser.baudrate = (9600)
 
     if clear_oled:
         text = "code: clear"
@@ -21,35 +21,40 @@ def display(text, coordx, coordy, clear_oled=False):
     bytetext = bytearray(str(text + "\n"), encoding="utf-8")
     bytenumbers = bytearray(str([coordx, coordy]), encoding="utf-8")
 
-    ser.port = "COM5" # CHANGE THIS PORT
+    ser.port = "COM7"
     ser.open()
 
     time.sleep(0.1)
     ser.write(bytetext)
     time.sleep(0.1)
     ser.write(bytenumbers)
+    time.sleep(0.1)
+
+    ser.close()
 
     return True
 
 
-def format_display(text:str="", line1:str="", line2:str="", line3:str=""):
+def format_display(text:str="", lines:list=[]):
     """
     A simple helper function to wrap any given amount of text onto the OLED.
 
     Choose between the "text" argument (if you only want to wrap the text you
-    currently have to the screen) or the "lineX" arguments (if you have three 
-    lines you want to display)
+    currently have to the screen) or the "lines" argument (just pass a list of 
+    lines and it will automatically list the lines in order)
     """
+
+    charsPerLine = 16
+    numLines = 6
+    spaceBtwLines = 10
 
     if len(text) > 0:
         numChars = len(text)
-        if numChars > 48:
+        if numChars > (charsPerLine * numLines):
             print("you are being notified that some text at the end will be cropped off")
 
-        line1 = text[:16]
-        line2 = text[16:32]
-        line3 = text[32:48]
+        lines = [text[i * charsPerLine:(i + 1) * charsPerLine] for i in range(numLines)]
 
-    display(line1, 0, 10)
-    display(line2, 0, 20)
-    display(line3, 0, 30)
+    for i, line in enumerate(lines):
+        display(line, 0, i * spaceBtwLines)
+        time.sleep(0.1)
