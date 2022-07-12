@@ -7,7 +7,6 @@ import time
 import os
 
 from playmusic import fade_out_while_speaking, unfade_in_while_speaking
-from display_control import format_display
 
 # function to play audio.
 def mp3tts(audio):
@@ -62,7 +61,6 @@ def myCommand(prompt):
     pytts(prompt)
     with sr.Microphone() as source:
         r.adjust_for_ambient_noise(source)
-        r.energy_threshold = 1000 # anywhere from 50 to 4000
         print("Say something!")
         audio = r.listen(source, phrase_time_limit=4)
     try:
@@ -74,5 +72,3 @@ def myCommand(prompt):
     except sr.RequestError as e:
         pytts("Could not request results from Google Speech Recognition API service; {0}".format(e))
 
-if __name__ == '__main__':
-    pytts("Hello World")

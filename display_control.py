@@ -13,7 +13,7 @@ def display(text, coordx, coordy, clear_oled=False):
     than ~16 characters (including spaces).
     """
     ser = serial.Serial()
-    ser.baudrate = (9600)
+    ser.baudrate = (115200)
 
     if clear_oled:
         text = "code: clear"
@@ -29,6 +29,8 @@ def display(text, coordx, coordy, clear_oled=False):
     time.sleep(0.1)
     ser.write(bytenumbers)
     time.sleep(0.1)
+
+    
 
     ser.close()
 
@@ -58,3 +60,10 @@ def format_display(text:str="", lines:list=[]):
     for i, line in enumerate(lines):
         display(line, 0, i * spaceBtwLines)
         time.sleep(0.1)
+
+if __name__ == '__main__':
+    print("displaying a thingy")
+    while True:
+        print(display("hello world", 0, 0))
+        time.sleep(1)
+        print("waiting...")

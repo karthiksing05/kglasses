@@ -21,7 +21,6 @@ def is_playing():
 
 def fade_out_while_speaking():
     try:
-        
         if is_playing():
             pygame.mixer.music.set_volume(0.2)
     except Exception as e:
