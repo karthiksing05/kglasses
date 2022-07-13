@@ -24,10 +24,9 @@ image = Image.new("1", (oled.width, oled.height))
 draw = ImageDraw.Draw(image)
 
 fonttypes = {
-    "header":("/fonts/tahomabold.ttf", 24),
-    "body":("/fonts/tahoma.ttf", 15),
-    "special":("/fonts/magneto.ttf", 24) # used for like time and date and stuff ig, i like the font
-    
+    "header":("/home/pi/kglasses/fonts/tahomabold.ttf", 24),
+    "body":("/home/pi/kglasses/fonts/minecraftia.ttf", 16),
+    "special":("/home/pi/kglasses/fonts/magneto.ttf", 24) # used for like time and date and stuff ig, i like the font
 }
 
 def clear_display():
