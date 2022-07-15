@@ -26,7 +26,7 @@ draw = ImageDraw.Draw(image)
 fonttypes = {
     "header":("/home/pi/kglasses/fonts/tahomabold.ttf", 24),
     "body":("/home/pi/kglasses/fonts/minecraftia.ttf", 16),
-    "special":("/home/pi/kglasses/fonts/magneto.ttf", 24) # used for like time and date and stuff ig, i like the font
+    "special":("/home/pi/kglasses/fonts/magneto.ttf", 24)
 }
 
 def clear_display():
@@ -47,12 +47,3 @@ def write_text(text:str, coords:tuple, fonttype:str):
     update_image()
 
 clear_display()
-
-def test_font():
-    write_text("xxxxxxxxxxxxxxxx", (0, 0), "body") # 16 characters
-    write_text("abcdefghijklm", (0, fonttypes["body"][1]), "body")
-    write_text("nopqrstuvwxyz", (0, fonttypes["body"][1] * 2), "body")
-    write_text("1234567890", (0, fonttypes["body"][1] * 3), "body")
-    write_text("/.,'\";:][}{\\~`|", (0, fonttypes["body"][1] * 4), "body")
-
-test_font()
