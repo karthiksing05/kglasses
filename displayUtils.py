@@ -1,3 +1,4 @@
+from turtle import clear
 import board
 import digitalio
 from PIL import Image, ImageDraw, ImageFont
@@ -45,5 +46,10 @@ def write_text(text:str, coords:tuple, fonttype:str):
     draw.text(coords, text, font=font, fill=255)
 
     update_image()
+
+# Helper Functions:
+def show_home_screen():
+    clear_display()
+
 
 clear_display()
