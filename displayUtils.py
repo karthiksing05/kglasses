@@ -1,3 +1,4 @@
+from asyncore import write
 import gaugette.gpio
 import gaugette.ssd1306
 import gaugette
@@ -31,10 +32,11 @@ def write_text(text:str, coordx:int, coordy:int, fonttype:str):
     
     oled.display()
 
-def display_home_screen():
+def display_home_screen(numMsgs:int):
     clear_display()
     time = datetime.datetime.now().strftime("%H:%M:%S")
     write_text(time, 0, 0, "time")
+    write_text("{} unread", 0, 34, "body")
 
 if __name__ == "__main__":
     while True:
