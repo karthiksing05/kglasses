@@ -1,3 +1,4 @@
+from turtle import clear
 import gaugette.gpio
 import gaugette.ssd1306
 import gaugette
@@ -59,10 +60,16 @@ def display_messages_screen(numUnread:int):
     write_image("WHATSAPP-IMAGE-FN", 0, 0)
     write_text("")
 
-def display_weather_screen():
+def display_weather_screen(temp, desc):
     clear_display()
 
 def display_voice_assistant_screen():
+    clear_display()
+
+def display_music_screen():
+    clear_display()
+
+def display_settings_screen():
     clear_display()
 
 
