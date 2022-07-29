@@ -31,7 +31,7 @@ def write_text(text:str, coordx:int, coordy:int, fonttype:str):
     
     oled.display()
 
-def show_display(filename:str, coordx:int, coordy:int):
+def write_image(filename:str, coordx:int, coordy:int):
 
     image = Image.open(filename)
     imageBW = image.convert("1")
@@ -40,7 +40,7 @@ def show_display(filename:str, coordx:int, coordy:int):
 
     for x in range(coordx, width + coordx):
         for y in range(coordy, height + coordy):
-            oled.draw_pixel(x, y, bool(int(imageBW.getpixel(x, y))))
+            oled.draw_pixel(x, y, bool(int(imageBW.getpixel((x, y)))))
 
     oled.display()
 
@@ -54,14 +54,16 @@ def display_dt_screen():
     write_text(time, 0, 0, "time")
     write_text(date, 0, 33, "date")
 
-def display_messages_screen():
-    pass
+def display_messages_screen(numUnread:int):
+    clear_display()
+    write_image("WHATSAPP-IMAGE-FN", 0, 0)
+    write_text("")
 
 def display_weather_screen():
-    pass
+    clear_display()
 
 def display_voice_assistant_screen():
-    pass
+    clear_display()
 
 
 if __name__ == "__main__":
