@@ -1,8 +1,8 @@
-from asyncore import write
 import gaugette.gpio
 import gaugette.ssd1306
 import gaugette
-from gaugette.fonts import tahoma_16, arial_24, stencil_33, magneto_16
+from gaugette.fonts import stencil_33, magneto_24, arial_24
+from PIL import Image
 import datetime
 import time
 
@@ -15,10 +15,9 @@ oled = gaugette.ssd1306.SSD1306(_gpio, _spi, reset_pin=RESET_PIN, dc_pin=DC_PIN,
 oled.begin()
 
 fonttypes = {
-    "body":tahoma_16,
-    "header":arial_24,
     "time": stencil_33,
-    "date": magneto_16
+    "date": magneto_24,
+    "normal":arial_24
 }
 
 def clear_display():
@@ -32,13 +31,41 @@ def write_text(text:str, coordx:int, coordy:int, fonttype:str):
     
     oled.display()
 
-def display_home_screen(numMsgs:int):
+def show_display(filename:str, coordx:int, coordy:int):
+
+    image = Image.open(filename)
+    imageBW = image.convert("1")
+    width = image.width
+    height = image.height
+
+    for x in range(coordx, width + coordx):
+        for y in range(coordy, height + coordy):
+            oled.draw_pixel(x, y, bool(int(imageBW.getpixel(x, y))))
+
+    oled.display()
+
+# default screen displays
+
+def display_dt_screen():
     clear_display()
-    time = datetime.datetime.now().strftime("%H:%M:%S")
+    now = datetime.datetime.now()
+    time = now.strftime("%-I:%M:%S")
+    date = now.strftime(r"%-m/%-d/%y")
     write_text(time, 0, 0, "time")
-    write_text("{} unread", 0, 34, "body")
+    write_text(date, 0, 33, "date")
+
+def display_messages_screen():
+    pass
+
+def display_weather_screen():
+    pass
+
+def display_voice_assistant_screen():
+    pass
+
 
 if __name__ == "__main__":
     while True:
-        display_home_screen()
+        display_dt_screen()
         time.sleep(0.1)
+
