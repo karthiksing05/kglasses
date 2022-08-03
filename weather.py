@@ -58,7 +58,7 @@ def get_weather(city):
 
     temp, desc = forecast(place)
 
-    return temp, desc
+    return round(temp, 1), desc
 
 if __name__ == "__main__":
-    get_weather("present")
+    print(get_weather("present"))

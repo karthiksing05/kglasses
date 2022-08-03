@@ -1,3 +1,6 @@
 Things to Linux-ize:
 - Note-taking
 - img filenames
+
+General Cleanup:
+- reminders...
