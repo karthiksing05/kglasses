@@ -2,7 +2,7 @@ import gaugette.gpio
 import gaugette.ssd1306
 import gaugette
 from gaugette.fonts import stencil_33, magneto_24, arial_24
-from PIL import Image
+from PIL import Image, ImageFont, ImageDraw
 import datetime
 import time
 
@@ -33,6 +33,15 @@ images = {
 def clear_display():
     oled.clear_display()
 
+def disp_util(coordx:int, coordy:int, image):
+    width = image.width
+    height = image.height
+
+    for x in range(coordx, width + coordx):
+        for y in range(coordy, height + coordy):
+            oled.draw_pixel(x, y, bool(int(image.getpixel((x, y)))))
+
+
 def write_text(coordx:int, coordy:int, text:str, fonttype:str):
     
     font = fonttypes[fonttype]
@@ -40,6 +49,19 @@ def write_text(coordx:int, coordy:int, text:str, fonttype:str):
     oled.draw_text3(coordx, coordy, text, font)
     
     oled.display()
+
+def custom_write_text(coordx:int, coordy:int, text:str, filename:str, fontsize:int):
+
+    font = ImageFont.truetype(filename, fontsize)
+    image = Image.new("1", (len(text) * 5, fontsize)) # TODO edit these constants as necessary
+
+    draw = ImageDraw.Draw(image)
+    draw.text((0, 0), text, font=font)
+
+    disp_util(coordx, coordy, image)
+
+    oled.display()
+
 
 def write_image(coordx:int, coordy:int, imageName:str="", filename:str=""):
 
@@ -50,12 +72,8 @@ def write_image(coordx:int, coordy:int, imageName:str="", filename:str=""):
     else:
         raise Exception("Please specify either the filename or a preselected file image name")
     imageBW = image.convert("1")
-    width = image.width
-    height = image.height
-
-    for x in range(coordx, width + coordx):
-        for y in range(coordy, height + coordy):
-            oled.draw_pixel(x, y, bool(int(imageBW.getpixel((x, y)))))
+    
+    disp_util(coordx, coordy, imageBW)
 
     oled.display()
 
