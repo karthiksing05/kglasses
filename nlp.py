@@ -71,12 +71,6 @@ def execute_action(intent_name, entities, userText):
         query = userText
         answer_question(query)
 
-    elif intent_name == "date_today":
-        date_str = date_today()
-
-    elif intent_name == "time_today":
-        time_str = time_today()
-
     elif intent_name == "get_weather":
         try:
             location = entities['location:location'][0]['body']
