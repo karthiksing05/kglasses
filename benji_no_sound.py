@@ -49,4 +49,6 @@ def main(name, gender, passphrase):
             pytts("Sorry, I don't understand.")
             continue
 
-
+if __name__ == "__main__":
+    name, gender, passphrase = setup()
+    main(name, gender, passphrase)

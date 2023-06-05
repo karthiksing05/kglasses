@@ -53,10 +53,7 @@ def pygame_pause():
         pygame.mixer.music.pause()
     
     except Exception as e:
-        if str(e) == "mixer not initialized":
-            print("You have no songs playing currently.")
-        
-        else:
+        if str(e) != "mixer not initialized":
             print("Different Exception: {}".format(e))
 
 def pygame_unpause():
@@ -64,10 +61,7 @@ def pygame_unpause():
         pygame.mixer.music.unpause()
     
     except Exception as e:
-        if str(e) == "mixer not initialized":
-            print("You have no songs playing currently.")
-        
-        else:
+        if str(e) != "mixer not initialized":
             print("Different Exception: {}".format(e))
 
 def pygame_stop():

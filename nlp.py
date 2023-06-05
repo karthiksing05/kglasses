@@ -76,7 +76,7 @@ def execute_action(intent_name, entities, userText):
             location = entities['location:location'][0]['body']
         except:
             location = "present"
-        get_weather(location)
+        pytts(get_weather(location))
 
     elif intent_name == "news":
         headlines = get_news()
@@ -89,6 +89,14 @@ def execute_action(intent_name, entities, userText):
         demo()
     
     elif intent_name == 'reminder': # train Wit.ai clf on reminders
-        reminder = entities['song_title:song_title'][0]['body']
-        dt_to_remind = entities['song_title:song_title'][0]['body']
-        write_reminder(reminder, dt_to_remind)
+        pass
+
+    elif intent_name == 'send_message':
+        """
+        This basically needs to check whether the name and msg content were in the phrase, if not, ask for them, then proceed to send the message
+        if the name isn't in the contacts, we need to prompt a phone number enter (default area code of +1)
+        """
+        pass
+
+    elif intent_name == 'count_notifs':
+        pass

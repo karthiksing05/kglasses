@@ -33,11 +33,11 @@ class Messager(object):
 
     def send_message(self, number:str, text:str):
         web.open(f"https://web.whatsapp.com/send?phone={number}&text={quote(text)}")
-        time.sleep(3)
+        time.sleep(10)
         pg.click(self.width / 2, self.height / 2)
-        time.sleep(1)
+        time.sleep(2)
         pg.press("enter")
-        time.sleep(1)
+        time.sleep(2)
         pg.hotkey("ctrl", "w")
         pg.press("enter")
         if number != self.contacts["Me"]:
@@ -73,3 +73,11 @@ class Messager(object):
             totalUnread += int(msg.find('span').text)
         
         return totalUnread
+    
+    def preProcessText(self, cmd:str):
+        # we need to create a command that converts all texts to be sent directly
+        pass
+
+if __name__ == "__main__":
+    msgr = Messager()
+    print(msgr.count_notifs())

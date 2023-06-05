@@ -1,2 +1,2 @@
-model_checkpoint_path: "C:\\Users\\karth\\Desktop\\Karthik\\smartglasses\\ai\\data\\model.tflearn"
-all_model_checkpoint_paths: "C:\\Users\\karth\\Desktop\\Karthik\\smartglasses\\ai\\data\\model.tflearn"
+model_checkpoint_path: "C:\\Users\\karth\\Desktop\\Karthik\\smartglasses\\piCode\\data\\model.tflearn"
+all_model_checkpoint_paths: "C:\\Users\\karth\\Desktop\\Karthik\\smartglasses\\piCode\\data\\model.tflearn"

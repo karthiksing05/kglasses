@@ -15,7 +15,7 @@ client = wolframalpha.Client(app_id=APP_ID)
 def answer_question(command):
     values = [command, None]
     try:
-        wiki_res = wikipedia.summary(values[0], sentences=1)
+        wiki_res = wikipedia.summary(values[0], sentences=3)
         wolfram_res = next((client.query(values[0])).results).text
         pytts("Answer: "+wolfram_res)
         print("Answer: " + wolfram_res, "\nMore Details: " + wiki_res)
@@ -31,7 +31,7 @@ def answer_question(command):
         # print(wolfram_res)
 
     except:
-        wiki_res = wikipedia.summary(values[0], sentences=1)
+        wiki_res = wikipedia.summary(values[0], sentences=3)
         pytts("Answer: "+wiki_res)
         # print(wiki_res)
 
