@@ -22,6 +22,29 @@ class Messager(object):
         with open(self.contactsFN, "rb") as f:
             self.contacts = pickle.load(f)
 
+    def get_contacts_online(self):
+        if os.path.exists("data\\whatsapp.txt"):
+            os.remove("data\\whatsapp.txt")
+
+        web.open("https://web.whatsapp.com/")
+        time.sleep(3)
+        pg.hotkey("ctrl", "s")
+        time.sleep(1)
+        saveFilename = os.getcwd() + "\\data\\whatsapp.txt"
+        pg.typewrite(saveFilename)
+        pg.press("enter")
+        time.sleep(5)
+        pg.hotkey("ctrl", "w")
+
+        for file in glob.glob("data\\whatsapp_files\\*.*"):
+            os.remove(file)
+        os.rmdir("data\\whatsapp_files")
+
+        with open("data\\whatsapp.txt", "r", encoding='cp437') as f:
+            soup = BeautifulSoup(f.read(), "html.parser")
+        
+        
+
     def add_new_contact(self, name:str, number:str):
         if "+" not in number:
             number = "+1" + number
