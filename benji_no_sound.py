@@ -39,7 +39,7 @@ def main(name, gender, passphrase):
 
     while True:
 
-        command = input("i am ready for your command")
+        command = input("Say Something! ")
         try:
             intent, entities, text = identify_action(command)
 
